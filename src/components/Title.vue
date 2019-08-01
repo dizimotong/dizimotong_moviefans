@@ -38,4 +38,7 @@ li {
 a {
   color: #42b983;
 }
+div {
+  text-align: center;
+}
 </style>

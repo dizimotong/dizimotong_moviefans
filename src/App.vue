@@ -1,25 +1,16 @@
 <template>
-  <div id="app">
-    <div>
-      <router-view class="horizontal-div"></router-view>
-      <city></city>
-    </div>
-    <router-view name="movie"></router-view>
+  <div id='app'>
+    <router-view></router-view>
   </div>
 </template>
 
 <script>
-import City from './components/City'
 export default {
-  name: 'App',
-  components: {
-    City
-  }
 }
 </script>
 
 <style scoped>
-#app {
+.app {
   overflow: hidden;
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -31,7 +22,5 @@ export default {
 #city {
   margin-left: 100px;
 }
-.horizontal-div {
-  display: inline-block;
-}
+
 </style>
