@@ -80,10 +80,36 @@ export default {
       }
     },
     toRegister () {
-      this.$router.push('/Login')
+      this.showRegister = true
+      this.showLogin = false
     },
     register () {
-      this.$router.push('/Login')
+      if(this.username == '' || this.password == ''){  // eslint-disable-line
+        alert('请输入账号或密码')
+      } else {
+        var url = 'http://localhost:8085/dizimotong_moviefans/index.php/Home/user/register'
+        var params = new URLSearchParams()
+        params.append('username', this.newusername)
+        params.append('password', this.newpassword)
+        this.axios.post(url, params)
+          .then(res => {
+          if(res.data.code == 'ok') {  // eslint-disable-line
+              this.prompt = '注册成功'
+              this.showPrompt = true
+              this.username = ''
+              this.password = ''
+              setTimeout(function () {
+                this.showRegister = false
+                this.showLogin = true
+                this.showPrompt = false
+              }.bind(this), 1000)
+            }
+            console.log(res)
+          })
+          .catch(err => {
+            console.error(err)
+          })
+      }
     }
   }
 }
